@@ -30,10 +30,21 @@ function Home() {
     return () => clearTimeout(timeoutRef.current);
   }, [current]);
 
+  const handleConnectClick = () => {
+    const connectSection = document.getElementById('connect-section');
+    if (connectSection) {
+      connectSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
-    <div>
-      <main className="bg-gray-200 min-h-screen min-w-full p-0 m-0">
-        <div className="relative w-screen h-[70vh] overflow-hidden mb-4">
+    <div className="w-full overflow-x-hidden">
+      <main className="bg-gray-200 min-h-screen w-full p-0 m-0">
+        {/* Hero Carousel Section */}
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden mb-4">
           <div
             className="flex transition-transform duration-700 ease-in-out h-full w-full"
             style={{ transform: `translateX(-${current * 100}vw)` }}
@@ -43,41 +54,68 @@ function Home() {
                 key={idx}
                 src={src}
                 alt={`carousel-${idx}`}
-                className="w-screen h-[70vh] object-cover flex-shrink-0"
+                className="w-full h-full object-cover flex-shrink-0"
                 style={{ opacity: 1 }}
                 draggable="false"
               />
             ))}
           </div>
+          
+          {/* Carousel Indicators for Mobile */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  idx === current ? 'bg-yellow-500' : 'bg-white/50'
+                }`}
+                onClick={() => setCurrent(idx)}
+              />
+            ))}
+          </div>
         </div>
-        {/* Text below the carousel */}
-        <div className="w-full  justify-center mt-8 ">
-          <h1
-            className="text-3xl font-bold text-black text-center drop-shadow-lg"
-            style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}
-          >
-            Make Your Dream Home True With Design Studio Architects
-          </h1>
-          <div className='flex justify-center items-center mt-8'>
-            <button >
-              Connect With Us
-            </button>
+
+        {/* Hero Text Section */}
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="max-w-6xl mx-auto">
+            <h1
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center drop-shadow-lg leading-tight"
+              style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}
+            >
+              Make Your Dream Home True With Design Studio Architects
+            </h1>
+            
+            <div className='flex justify-center items-center mt-6 sm:mt-8 md:mt-10'>
+              <button 
+                onClick={handleConnectClick}
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-base sm:text-lg rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-50 w-full sm:w-auto max-w-xs sm:max-w-none"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                Connect With Us
+              </button>
+            </div>
           </div>
         </div>
        
       </main>
-      <div>
-          <Why/>
-        </div>
-        <div>
-          <Projects/>
-        </div>
-        <div>
-          <Testinomials/>
-        </div>
-        <div>
-          <Connect/>
-        </div>
+
+      {/* Content Sections */}
+      <div className="w-full">
+        <Why/>
+      </div>
+      
+      <div className="w-full">
+        <Projects/>
+      </div>
+      
+      <div id="connect-section" className="w-full">
+        <Connect/>
+      </div>
+      
+      <div className="w-full">
+        <Testinomials/>
+      </div>
+        
     </div>
   )
 }

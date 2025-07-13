@@ -1,48 +1,319 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+// Add Google Fonts import for Playfair Display in the document head
+if (typeof document !== 'undefined' && !document.getElementById('playfair-font')) {
+  const link = document.createElement('link');
+  link.id = 'playfair-font';
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap';
+  document.head.appendChild(link);
+}
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+    projectType: 'residential'
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    alert('Thank you for your message! We will get back to you soon.');
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+      projectType: 'residential'
+    });
+  };
+
+  const contactInfo = [
+    {
+      icon: "📍",
+      title: "Visit Our Studio",
+      details: "123 Design Avenue, Banjara Hills, Hyderabad, Telangana 500034",
+      description: "Our main studio where we welcome clients and showcase our portfolio."
+    },
+    {
+      icon: "📞",
+      title: "Call Us",
+      details: "+91 98765 43210",
+      description: "Speak directly with our design team for immediate assistance."
+    },
+    {
+      icon: "✉️",
+      title: "Email Us",
+      details: "hello@designstudioarchitects.com",
+      description: "Send us your project details and we'll respond within 24 hours."
+    },
+    {
+      icon: "⏰",
+      title: "Business Hours",
+      details: "Mon - Sat: 9:00 AM - 7:00 PM",
+      description: "We're available during these hours for consultations and meetings."
+    }
+  ];
+
+  const socialLinks = [
+    { name: "Instagram", icon: "📷", url: "#" },
+    { name: "Facebook", icon: "📘", url: "#" },
+    { name: "LinkedIn", icon: "💼", url: "#" },
+    { name: "Pinterest", icon: "📌", url: "#" }
+  ];
+
   return (
-    <main className="py-16 px-6">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">Contact Us</h1>
-      <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col md:flex-row gap-10">
-        <form className="flex-1 space-y-6">
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Name</label>
-            <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your Name" />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Email</label>
-            <input type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="you@email.com" />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Message</label>
-            <textarea className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="4" placeholder="How can we help you?" />
-          </div>
-          <button type="submit" className="w-full py-3 bg-indigo-600 text-white font-bold rounded-lg shadow hover:bg-indigo-700 transition-colors">Send Message</button>
-        </form>
-        <div className="flex-1 flex flex-col justify-center gap-6">
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Inspire Interiors</h2>
-            <p className="text-gray-700">123 Elegant Avenue<br/>Mumbai, India</p>
-          </div>
-          <div>
-            <p className="text-gray-700"><span className="font-semibold">Phone:</span> +91 98765 43210</p>
-            <p className="text-gray-700"><span className="font-semibold">Email:</span> hello@inspireinteriors.com</p>
-          </div>
-          <div className="flex gap-4 mt-2">
-            <a href="#" aria-label="Instagram" className="hover:text-indigo-600 transition-colors">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><circle cx="12" cy="12" r="4"/><path d="M18.5 2h-13A3.5 3.5 0 0 0 2 5.5v13A3.5 3.5 0 0 0 5.5 22h13a3.5 3.5 0 0 0 3.5-3.5v-13A3.5 3.5 0 0 0 18.5 2zm-6.5 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm6-10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
-            </a>
-            <a href="#" aria-label="Facebook" className="hover:text-indigo-600 transition-colors">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
-            </a>
-            <a href="#" aria-label="Pinterest" className="hover:text-indigo-600 transition-colors">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489-.094-.807-.179-2.048.037-2.93.195-.8 1.252-5.104 1.252-5.104s-.319-.638-.319-1.582c0-1.484.861-2.592 1.934-2.592.912 0 1.354.684 1.354 1.504 0 .918-.584 2.292-.885 3.57-.252 1.066.535 1.936 1.586 1.936 1.903 0 3.366-2.008 3.366-4.904 0-2.563-1.844-4.36-4.478-4.36-3.054 0-4.85 2.292-4.85 4.66 0 .924.355 1.918.8 2.457.09.11.104.206.076.316-.083.34-.27 1.066-.307 1.215-.05.2-.162.243-.376.147-1.4-.573-2.273-2.37-2.273-3.818 0-3.108 2.26-5.963 6.522-5.963 3.423 0 6.086 2.438 6.086 5.7 0 3.406-2.137 6.146-5.104 6.146-1.021 0-1.982-.531-2.308-1.155l-.627 2.39c-.19.73-.563 1.646-.84 2.205C9.68 21.8 10.82 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            </a>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <h1 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            Get In Touch
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Ready to transform your space? Let's start a conversation about your dream project.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Information Cards */}
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8 sm:mb-12"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            How Can We Help You?
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
+            {contactInfo.map((info, index) => (
+              <div key={index} className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{info.icon}</div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{info.title}</h3>
+                <p className="text-yellow-600 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">{info.details}</p>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{info.description}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      {/* Contact Form and Map Section */}
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+            {/* Contact Form */}
+            <div className="bg-gray-50 p-6 sm:p-8 rounded-2xl shadow-lg">
+              <h3 
+                className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                Send Us a Message
+              </h3>
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label className="block text-gray-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm sm:text-base"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm sm:text-base"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label className="block text-gray-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm sm:text-base"
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Project Type</label>
+                    <select
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleChange}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm sm:text-base"
+                    >
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="hospitality">Hospitality</option>
+                      <option value="renovation">Renovation</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Subject *</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm sm:text-base"
+                    placeholder="What's your project about?"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Message *</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="5"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent resize-none text-sm sm:text-base"
+                    placeholder="Tell us about your project, requirements, and vision..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-3 sm:py-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-base sm:text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            {/* Map and Additional Info */}
+            <div className="space-y-6 sm:space-y-8">
+              {/* Map */}
+              <div className="bg-gray-200 rounded-2xl overflow-hidden shadow-lg h-64 sm:h-80">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.1234567890123!2d78.45678901234567!3d17.41234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI0JzQ0LjQiTiA3OMKwMjcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Design Studio Architects Location"
+                />
+              </div>
+
+              {/* Quick Contact */}
+              <div className="bg-gray-50 p-4 sm:p-6 rounded-2xl">
+                <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Quick Contact</h4>
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex items-center">
+                    <span className="text-yellow-500 mr-2 sm:mr-3 text-lg">📞</span>
+                    <span className="text-gray-700 text-sm sm:text-base">+91 98765 43210</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-yellow-500 mr-2 sm:mr-3 text-lg">✉️</span>
+                    <span className="text-gray-700 text-sm sm:text-base">hello@designstudioarchitects.com</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-yellow-500 mr-2 sm:mr-3 text-lg">📍</span>
+                    <span className="text-gray-700 text-sm sm:text-base">123 Design Avenue, Banjara Hills, Hyderabad</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="bg-gray-50 p-4 sm:p-6 rounded-2xl">
+                <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Follow Us</h4>
+                <div className="flex space-x-3 sm:space-x-4">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center text-lg sm:text-xl transition-colors duration-300 hover:scale-110"
+                      aria-label={social.name}
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-yellow-500">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8">
+            Schedule a free consultation and let's discuss how we can bring your vision to life.
+          </p>
+          <button className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-yellow-500 font-semibold text-base sm:text-lg rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300">
+            Schedule Consultation
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8 sm:mb-12"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">How long does a typical project take?</h3>
+              <p className="text-sm sm:text-base text-gray-700">Project timelines vary based on scope and complexity. A typical residential project takes 3-6 months, while larger commercial projects may take 6-12 months.</p>
+            </div>
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Do you offer free consultations?</h3>
+              <p className="text-sm sm:text-base text-gray-700">Yes! We offer a free initial consultation to discuss your project requirements and provide preliminary guidance.</p>
+            </div>
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">What areas do you serve?</h3>
+              <p className="text-sm sm:text-base text-gray-700">We primarily serve Hyderabad and surrounding areas, but we also take on projects across Telangana and Andhra Pradesh.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
 
