@@ -1,0 +1,45 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- House Outline -->
+  <g transform="translate(10, 10)">
+    <!-- House silhouette -->
+    <path d="M5 25 L5 5 L15 5 L15 25 Z" fill="#8B4513" stroke="#8B4513" stroke-width="0.5"/>
+    
+    <!-- Roof -->
+    <path d="M3 5 L17 5 L10 0 Z" fill="#8B4513" stroke="#8B4513" stroke-width="0.5"/>
+    
+    <!-- Interior Elements -->
+    
+    <!-- Armchair (left) -->
+    <rect x="6" y="20" width="2.5" height="3" rx="0.3" fill="#8B4513"/>
+    <rect x="6.2" y="19.5" width="2.1" height="0.8" rx="0.3" fill="#8B4513"/>
+    <!-- Armchair buttons -->
+    <circle cx="6.5" cy="19.8" r="0.2" fill="#D2B48C"/>
+    <circle cx="7" cy="19.8" r="0.2" fill="#D2B48C"/>
+    <circle cx="7.5" cy="19.8" r="0.2" fill="#D2B48C"/>
+    <circle cx="8" cy="19.8" r="0.2" fill="#D2B48C"/>
+    
+    <!-- Window (center) -->
+    <rect x="9.5" y="8" width="4" height="5" fill="#F5F5DC" stroke="#8B4513" stroke-width="0.2"/>
+    <!-- Window grid -->
+    <line x1="9.5" y1="10.5" x2="13.5" y2="10.5" stroke="#8B4513" stroke-width="0.1"/>
+    <line x1="9.5" y1="12" x2="13.5" y2="12" stroke="#8B4513" stroke-width="0.1"/>
+    <line x1="11.5" y1="8" x2="11.5" y2="13" stroke="#8B4513" stroke-width="0.1"/>
+    
+    <!-- Curtain -->
+    <rect x="12" y="8" width="1.5" height="5" fill="#F5F5DC"/>
+    <path d="M12 8 Q12.5 7.5 12.75 8 Q12.5 8.5 12 8" fill="#F5F5DC"/>
+    
+    <!-- Potted Plant (right of window) -->
+    <rect x="14" y="20" width="1" height="2" fill="#8B4513"/>
+    <ellipse cx="14.5" cy="18" rx="0.8" ry="1.5" fill="#8B7355"/>
+    <ellipse cx="14.2" cy="17.5" rx="0.6" ry="1.2" fill="#8B7355"/>
+    <ellipse cx="14.8" cy="17.5" rx="0.6" ry="1.2" fill="#8B7355"/>
+    
+    <!-- Floor Lamp (far right) -->
+    <rect x="16" y="18" width="0.3" height="5" fill="#8B4513"/>
+    <ellipse cx="16.15" cy="17" rx="1" ry="0.8" fill="#F5F5DC"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#8B4513" stroke="#F5F5DC" stroke-width="0.5">VASTORA DESIGNS</text>
+</svg>
