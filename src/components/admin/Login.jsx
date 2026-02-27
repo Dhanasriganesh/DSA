@@ -65,11 +65,7 @@ function Login() {
           )}
 
           {/* Firebase Authentication Info */}
-          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-gray-700 font-semibold mb-2">🔐 Firebase Authentication</p>
-            <p className="text-sm text-gray-600">Use your Firebase credentials to login.</p>
-            <p className="text-sm text-gray-600 mt-1">See FIREBASE_SETUP.md for setup instructions.</p>
-          </div>
+   
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
